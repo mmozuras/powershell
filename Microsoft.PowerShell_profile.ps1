@@ -1,28 +1,29 @@
 ﻿Push-Location (Split-Path -Path $MyInvocation.MyCommand.Definition -Parent)
 
 Import-Module .\posh-git\posh-git
+. .\Aliases.ps1
 
 function prompt {
-	$path = ""
-	$pathbits = ([string]$pwd).split("\", [System.StringSplitOptions]::RemoveEmptyEntries)
+    $path = ""
+    $pathbits = ([string]$pwd).split("\", [System.StringSplitOptions]::RemoveEmptyEntries)
 
-	if($pathbits.length -eq 1) {
-		$path = $pathbits[0] + "\"
-	} else {
-		$path = $pathbits[$pathbits.length - 1]
-	}
-	$userLocation = $path
-	$host.UI.RawUi.WindowTitle = $userLocation
-    $host.UI.RawUI.ForegroundColor = $GitPromptSettings.DefaultForegroundColor
+    if($pathbits.length -eq 1) {
+        $path = $pathbits[0] + "\"
+    } else {
+        $path = $pathbits[$pathbits.length - 1]
+    }
     
-    Write-Host($userLocation) -nonewline -foregroundcolor DarkYellow    
-        
+    $host.UI.RawUi.WindowTitle = $path
+    $host.UI.RawUI.ForegroundColor = $GitPromptSettings.DefaultForegroundColor
+
+    Write-Host($path) -nonewline -foregroundcolor DarkYellow    
+
     $Global:GitStatus = Get-GitStatus
     Write-GitStatus $GitStatus
-    
+
     Write-Host(' ➤') -nonewline -foregroundcolor DarkYellow
-    
-	return " "
+
+    return " "
 }
 
 $teBackup = 'posh-git_DefaultTabExpansion'
