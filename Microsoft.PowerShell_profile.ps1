@@ -2,6 +2,7 @@
 
 Import-Module .\posh-git\posh-git
 Import-Module .\posh-svn\posh-svn
+. .\Do-Touch.ps1
 . .\Aliases.ps1
 
 function prompt {
