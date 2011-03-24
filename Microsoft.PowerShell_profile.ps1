@@ -42,6 +42,7 @@ function TabExpansion($line, $lastWord) {
     
     switch -regex ($lastBlock) {
         'git (.*)' { GitTabExpansion $lastBlock }
+        'svn (.*)' { SvnTabExpansion $lastBlock }
         default { & $teBackup $line $lastWord }
     }
 }
