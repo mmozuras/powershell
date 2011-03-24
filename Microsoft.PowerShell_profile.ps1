@@ -21,7 +21,7 @@ function prompt {
     $Global:GitStatus = Get-GitStatus
     Write-GitStatus $GitStatus
 
-    Write-Host(' ➤') -nonewline -foregroundcolor DarkYellow
+    Write-Host(' >') -nonewline -foregroundcolor DarkYellow
 
     return " "
 }
