@@ -1,6 +1,8 @@
 ﻿Push-Location (Split-Path -Path $MyInvocation.MyCommand.Definition -Parent)
 
 Import-Module .\posh-git\posh-git
+Import-Module .\posh-svn\posh-svn
+$global:SvnPromptSettings.BeforeText = ' [svn '
 . .\Aliases.ps1
 
 function prompt {
@@ -20,6 +22,9 @@ function prompt {
 
     $Global:GitStatus = Get-GitStatus
     Write-GitStatus $GitStatus
+
+    $Global:SvnStatus = Get-SvnStatus
+    Write-SvnStatus $SvnStatus
 
     Write-Host(' >') -nonewline -foregroundcolor DarkYellow
 
