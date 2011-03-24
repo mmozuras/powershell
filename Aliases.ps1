@@ -3,4 +3,5 @@ function ... {Set-Location ../.. }
 function .... {Set-Location ../../.. }
 function ..... {Set-Location ../../../.. }
 
-New-Alias touch Do-Touch
+Set-Alias touch Do-Touch
+Set-Alias sudo Elevate-Process

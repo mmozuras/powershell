@@ -41,3 +41,5 @@ function TabExpansion($line, $lastWord) {
         default { & $teBackup $line $lastWord }
     }
 }
+
+Enable-GitColors
