@@ -2,7 +2,6 @@
 
 Import-Module .\posh-git\posh-git
 Import-Module .\posh-svn\posh-svn
-$global:SvnPromptSettings.BeforeText = ' [svn '
 . .\Aliases.ps1
 
 function prompt {
@@ -18,7 +17,7 @@ function prompt {
     $host.UI.RawUi.WindowTitle = $path
     $host.UI.RawUI.ForegroundColor = $GitPromptSettings.DefaultForegroundColor
 
-    Write-Host($path) -nonewline -foregroundcolor DarkYellow    
+    Write-Host($path) -nonewline -foregroundcolor Yellow    
 
     $Global:GitStatus = Get-GitStatus
     Write-GitStatus $GitStatus
@@ -26,7 +25,7 @@ function prompt {
     $Global:SvnStatus = Get-SvnStatus
     Write-SvnStatus $SvnStatus
 
-    Write-Host(' >') -nonewline -foregroundcolor DarkYellow
+    Write-Host(' >') -nonewline -foregroundcolor Yellow
 
     return " "
 }
