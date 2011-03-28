@@ -5,4 +5,6 @@
 . .\Aliases.ps1
 . .\PromptConfig.ps1
 
+Import-Module PowerTab
+
 Pop-Location
