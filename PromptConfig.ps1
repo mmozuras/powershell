@@ -1,5 +1,5 @@
-Import-Module .\posh-git\posh-git
-Import-Module .\posh-svn\posh-svn
+Import-Module posh-git
+Import-Module posh-svn
 
 function prompt {
     $path = ""
