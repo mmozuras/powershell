@@ -1,0 +1,48 @@
+<Config>
+  <Category>Colors</Category>
+  <Name>BorderColor</Name>
+  <Value>DarkGray</Value>
+  <Type>ConsoleColor</Type>
+</Config>
+<Config>
+  <Category>Colors</Category>
+  <Name>BorderBackColor</Name>
+  <Value>DarkGray</Value>
+  <Type>ConsoleColor</Type>
+</Config>
+<Config>
+  <Category>Colors</Category>
+  <Name>BackColor</Name>
+  <Value>Black</Value>
+  <Type>ConsoleColor</Type>
+</Config>
+<Config>
+  <Category>Colors</Category>
+  <Name>TextColor</Name>
+  <Value>Yellow</Value>
+  <Type>ConsoleColor</Type>
+</Config>
+<Config>
+  <Category>Colors</Category>
+  <Name>SelectedBackColor</Name>
+  <Value>Black</Value>
+  <Type>ConsoleColor</Type>
+</Config>
+<Config>
+  <Category>Colors</Category>
+  <Name>SelectedTextColor</Name>
+  <Value>White</Value>
+  <Type>ConsoleColor</Type>
+</Config>
+<Config>
+  <Category>Colors</Category>
+  <Name>BorderTextColor</Name>
+  <Value>Yellow</Value>
+  <Type>ConsoleColor</Type>
+</Config>
+<Config>
+  <Category>Colors</Category>
+  <Name>FilterColor</Name>
+  <Value>DarkGray</Value>
+  <Type>ConsoleColor</Type>
+</Config>
