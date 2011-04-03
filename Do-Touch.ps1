@@ -1,10 +1,10 @@
 function Do-Touch {
   param ( [string]$filename = $null );
   
-  if ( $filename ) {
+  if ($filename) {
     $file = @(Get-ChildItem -Path $filename -ErrorAction SilentlyContinue)[0]
 
-    if ( !$file ) {
+    if (!$file) {
       Set-Content -Path $filename -value $null;
       $file = @(Get-ChildItem -Path $filename)[0];
     }
