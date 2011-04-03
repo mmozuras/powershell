@@ -1,87 +1,23 @@
-#----------------------------------------------------------------
-# Touch.ps1
-#----------------------------------------------------------------
-param
-(
-  [string]$filespec = $null,         # Files to touch
-  [DateTime]$datetime = ([DateTime]::Now), # Use DateTime STRING instead of current time.
-  [int]$forward = 0,                 # Modify the time by going forward SECONDS s.
-  [string]$reference = $null,        # Use this file's time instead of current time.
-  [bool]$only_modification = $false, # Change only the modification time.
-  [bool]$only_access = $false        # Change only the access time
-);
-
-#----------------------------------------------------------------
-# Function Do-Touch
-#----------------------------------------------------------------
 function Do-Touch {
-  param(
-    [string]$filespec = $null,
-    [datetime]$datetime = ([DateTime]::Now),
-    [int]$forward = 0,
-    [string]$reference = $null,
-    [bool]$only_modification = $false,
-    [bool]$only_access = $false
-  );
+  param ( [string]$filename = $null );
   
-  $touch = $null;
-  
-  if ( $filespec )
-  {
-    $files = @(Get-ChildItem -Path $filespec -ErrorAction SilentlyContinue)
-    if ( !$files )
-    {
-      # If file doesn't exist, attempt to create one.
-      # A wildcard patter will fail silently.
-      Set-Content -Path $filespec -value $null;
-      $files = @(Get-ChildItem -Path $filespec -ErrorAction SilentlyContinue);
+  if ( $filename ) {
+    $file = @(Get-ChildItem -Path $filename -ErrorAction SilentlyContinue)[0]
+
+    if ( !$file ) {
+      Set-Content -Path $filename -value $null;
+      $file = @(Get-ChildItem -Path $filename)[0];
     }
     
-    if ( $files )
-    {
-      if ( $reference )
-      {
-        $reffile = Get-ChildItem -Path $reference -ErrorAction SilentlyContinue;
-        if ( $reffile )
-        {
-          [datetime]$touch = $reffile.LastAccessTime.AddSeconds($forward);
-        }
-      }
-      elseif ( $datetime )
-      {
-        [datetime]$touch = $datetime.AddSeconds($forward);
-      }
-      
-      if ( $touch )
-      {
-        [DateTime]$UTCTime = $touch.ToUniversalTime();
-        foreach ($file in $files)
-        {
-          if ( $only_access )
-          {
-            $file.LastAccessTime=$touch
-            $file.LastAccessTimeUtc=$UTCTime
-          }
-          elseif ( $only_modification )
-          {
-            $file.LastWriteTime=$touch
-            $file.LastWriteTimeUtc=$UTCTime
-          }
-          else
-          {
-            $file.CreationTime = $touch;
-            $file.CreationTimeUtc = $UTCTime;
-            $file.LastAccessTime=$touch
-            $file.LastAccessTimeUtc=$UTCTime
-            $file.LastWriteTime=$touch
-            $file.LastWriteTimeUtc=$UTCTime
-          }
-          $file | select Name, *time*
-        }
-      }
-    }
+    [datetime]$now = ([DateTime]::Now) 
+    [DateTime]$UTCNow = $now.ToUniversalTime();
+
+    $file.LastAccessTime = $now
+    $file.LastAccessTimeUtc = $UTCNow
+    $file.LastWriteTime = $now
+    $file.LastWriteTimeUtc = $UTCNow
+    $file | select Name, *time*
   }
 }
 
-Do-Touch -filespec $filespec -datetime $datetime -forward $forward -reference $reference `
-  -only_modification $only_modification -only_access $only_access;
+Do-Touch -filespec $filename;
