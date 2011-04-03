@@ -10,6 +10,8 @@ function Git-Commit { git commit -v }
 Set-Alias gct Git-Commit
 function Git-CommitAll { git commit -v -a}
 Set-Alias gca Git-CommitAll
+function Git-AmendAll { git commit -a --amend -C HEAD }
+Set-Alias gcaa Git-AmendAll
 function Git-Checkout { git checkout }
 Set-Alias gcc Git-Checkout
 function Git-Branch { git branch }
