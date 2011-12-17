@@ -8,5 +8,6 @@
 . .\PromptConfig.ps1
 
 Import-Module PowerTab
+Import-Module Find-String
 
 Pop-Location

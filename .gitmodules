@@ -4,3 +4,6 @@
 [submodule "Modules/posh-svn"]
 	path = Modules/posh-svn
 	url = git://github.com/JeremySkinner/posh-svn.git
+[submodule "Modules\\Find-String"]
+	path = Modules\\Find-String
+	url = git://github.com/drmohundro/Find-String.git
