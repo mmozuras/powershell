@@ -7,7 +7,6 @@
 . .\SvnAliases.ps1
 . .\PromptConfig.ps1
 
-Import-Module PowerTab
 Import-Module Find-String
 
 Pop-Location
